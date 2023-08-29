@@ -3,18 +3,22 @@ from constants import PLAYERS, TEAMS
 
 # def balance_teams():
 
-#  def clean_data():
-players_copy = copy.deepcopy(PLAYERS)
-heights = [item['height'] for item in players_copy]
-for item in heights:
-    height_int = (int(item.split()[0]))
-    cleaned_height = (f"{height_int} inches")
-    print(cleaned_height)
+# Read the existing player data from the PLAYERS constants provided in constants.py
+def info_clean():
+    players_copy = copy.deepcopy(PLAYERS)
+    cleaned_data=[]
+    cleaned_heights = []
+    cleaned_heights = [int(item['height'].split()[0]) for item in players_copy]
 
-names = [item['name'] for item in players_copy]
-guardian = [item['guardians'] for item in players_copy]
-experience = [item['experience'] for item in players_copy]
+    cleaned_experience = []
+    cleaned_experience = [True if item['experience'].lower() == "yes" else False for item in players_copy]
+
+    return cleaned_heights, cleaned_experience
+
+cleaned_heights, cleaned_experience = info_clean()
+
+print(cleaned_heights)
+print(cleaned_experience)
 
 
-
-# if __name__ == "__main__":
+    
