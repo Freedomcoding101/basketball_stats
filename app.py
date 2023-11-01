@@ -1,8 +1,10 @@
 import copy
 from constants import PLAYERS, TEAMS
 import random
+#The program imports the copy, PLAYERS, and TEAMS modules, and the random module.
 
 if __name__ == "__main__":
+    #The info_clean function is defined, which extracts and cleans data from the PLAYERS list. It creates lists of player heights, experience status, guardians, and names.
     def info_clean():
         players_copy = copy.deepcopy(PLAYERS)
 
@@ -20,6 +22,8 @@ if __name__ == "__main__":
 
     cleaned_heights, cleaned_experience, guardians, names = info_clean()
 
+    #A list of player dictionaries is created from the cleaned data and stored in the players list.
+
     players = []
     for i in range(len(cleaned_heights)):
         player = {
@@ -30,6 +34,7 @@ if __name__ == "__main__":
         }
         players.append(player)
 
+    #The balance_team function is defined to create three teams: Panthers, Bandits, and Warriors, while ensuring a balanced distribution of experienced and inexperienced players.
 
     def balance_team():
         
@@ -56,65 +61,91 @@ if __name__ == "__main__":
     
 Panthers, Bandits, Warriors = balance_team()
 
+def print_teams():
+    print("\nA) Panthers\n")
+    print("B) Bandits\n")
+    print("C) Warriors\n")
+    
 print("Welcome to the Basketball Stats Tool\n")
 
 print("----------MENU-----------\n")
 
+#The program then calls the balance_team function to create the teams, Panthers, Bandits, and Warriors.
+
 balance_team()
 
-
-print("Here are your choices:\n")
-print("A) Display Team Stats\n")
-print("B) Quit\n")
-
-choice_1 = input("Enter an option: \n")
-
-if choice_1 == "A":
-    print("\nA) Panthers\n")
-    print("B) Bandits\n")
-    print("C) Warriors\n")
-
-    choice_2 = input("Enter an option from above!: ")
-
-elif choice_1 =="B":
-    exit()
-
+#The program displays a menu for the user to choose options. The user can either display team stats or quit.
 
 while True:
-    try:
-        if choice_2 == ("A"):
-            print("-------------------------------------\n")
-            print("Panthers Stats\n")
-            print("-------------------------------------\n")
-            print(f"There are {len(Panthers)} players on the team!\n")
-            print(f"The players are: {(Panthers)}")
-            choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
-            
+    print("Here are your choices:\n")
+    print("A) Display Team Stats\n")
+    print("B) Quit\n")
 
-        elif choice_2 == ("B"):
-            print("-------------------------------------\n")
-            print("Bandits Stats\n")
-            print("-------------------------------------\n")
-            print(f"There are {len(Bandits)} players on the team!\n")
-            print(f"The players are: {(Bandits)}")
-            choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
-            
+    #The user enters their choice, and if they choose to display team stats, they are prompted to select a team (Panthers, Bandits, or Warriors).
 
-        elif choice_2 == ("C"):
-            print("-------------------------------------\n")
-            print("Warriors Stats\n")
-            print("-------------------------------------\n")
-            print(f"There are {len(Warriors)} players on the team!\n")
-            print(f"The players are: {(Warriors)}")
-            choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
-            
+    choice_1 = input("Enter an option: \n")
 
-        elif choice_2 == ("E"):
-            print("\nThank you for using our stats service!")
+    if choice_1 == "A":
+        print_teams()
+
+        choice_2 = input("Enter an option from above!: ")
+        
+        #Depending on the selected team, the program displays the team's stats, including the number of players on the team and the names of the players. The user is then given the option to see stats for another team or exit.
+        #The program continues to loop, allowing the user to see stats for other teams or exit the program.
+
+        if choice_2 == "A" or choice_2 == "B" or choice_2 == "C":
             break
-            
+        
+        else:
+            print("\nThat is not a valid option please pick from A B C: ")
+            print_teams()
+            choice_2 = input("Enter an option from above!: ")
+            break
 
-    except ValueError:
-        print("That is not a valid entry! Please try again")
+
+    elif choice_1 =="B":
+        exit()
+
+    else:
+        print("\nThat is not a valid answer please try again!\n")
+
+while True:
+    if choice_2 == ("A"):
+        print("-------------------------------------\n")
+        print("Panthers Stats\n")
+        print("-------------------------------------\n")
+        print(f"There are {len(Panthers)} players on the team!\n")
+        print(f"The players are: {(', '.join(Panthers))}")
+        choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
+        
+
+    elif choice_2 == ("B"):
+        print("-------------------------------------\n")
+        print("Bandits Stats\n")
+        print("-------------------------------------\n")
+        print(f"There are {len(Bandits)} players on the team!\n")
+        print(f"The players are: {(', '.join(Bandits))}")
+        choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
+        
+
+    elif choice_2 == ("C"):
+        print("-------------------------------------\n")
+        print("Warriors Stats\n")
+        print("-------------------------------------\n")
+        print(f"There are {len(Warriors)} players on the team!\n")
+        print(f"The players are: {(', '.join(Warriors))}")
+        choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
+        
+
+    elif choice_2 == ("E"):
+        print("\nThank you for using our stats service!")
+        break
+        
+    else:
+        print("\nThat is not a valid option please pick from A B C: ")
+        print_teams()
+        choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
+
+#Once the user chooses to exit, a thank-you message is displayed, and the program terminates.
 
 print("\nThank you for using our stat generator! If you ever require our service again dont hesitate to use our application!")
