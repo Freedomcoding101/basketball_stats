@@ -12,7 +12,7 @@ if __name__ == "__main__":
         cleaned_heights = [int(item['height'].split()[0]) for item in players_copy]
 
         cleaned_experience = []
-        cleaned_experience = [True if item['experience'].lower() == "yes" else False for item in players_copy]
+        cleaned_experience = [bool(True) if item['experience'].lower() == "yes" else bool(False) for item in players_copy]
 
         guardians = [item['guardians'].split("and") for item in players_copy]
         names = [item['name'] for item in players_copy]
