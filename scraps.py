@@ -1,5 +1,5 @@
 import copy
-from constants import PLAYERS, TEAMS
+from constants import PLAYERS
 import random
 
 if __name__ == "__main__":
