@@ -59,48 +59,74 @@ if __name__ == "__main__":
         print("C) Warriors\n")
 
     def menu_option():
-        print("Here are your choices:\n")
+        print("Welcome to the Basketball Stats Tool:\n")
         print("A) Display Team Stats\n")
         print("B) Quit\n")
 
-bandit_stats = []
-warrior_stats = []
-panther_stats = []
+    def print_parents(team_stats):
+        for player in team_stats:
+            name = player["name"]
+            guardian = (', ').join(player["guardian"])
+            print(f"Player: {name} - Guardian: {guardian}\n")
 
-for player_name in Bandits:
-    for player_data in players:
-        if player_data["name"] == player_name:
-            result = {
-                "name": player_name,
-                "height": player_data["height"],
-                "guardian": player_data["guardian"],
-            }
-            bandit_stats.append(result)
+    def experience_level(team_stats):
+        experienced = 0
+        inexperienced = 0
+        for player in team_stats:
+            if player["experience"] == True:
+                experienced += 1
+            elif player["experience"] == False:
+                inexperienced += 1
+        return experienced, inexperienced
 
-for player_name in Warriors:
-    for player_data in players:
-        if player_data["name"] == player_name:
-            result = {
-                "name": player_name,
-                "height": player_data["height"],
-                "guardian": player_data["guardian"],
-            }
-            warrior_stats.append(result)
+    def average_height(team_stats):
+        total_height = sum(player['height'] for player in team_stats)
+        average = total_height / len(team_stats)
+        return '{:.2f}'.format(average)
 
-for player_name in Panthers:
-    for player_data in players:
-        if player_data["name"] == player_name:
-            result = {
-                "name": player_name,
-                "height": player_data["height"],
-                "guardian": player_data["guardian"],
-            }
-            panther_stats.append(result)
+    bandit_stats = []
+    warrior_stats = []
+    panther_stats = []
+    
+    for player_name in Bandits:
+        for player_data in players:
+            if player_data["name"] == player_name:
+                result = {
+                    "name": player_name,
+                    "height": player_data["height"],
+                    "guardian": player_data["guardian"],
+                    "experience": player_data["experience"],
+                }
+                bandit_stats.append(result)
 
-def print_experience():
-    for player in panther_stats:
-        if player["experience"] == True:
-            print(1)
+    for player_name in Warriors:
+        for player_data in players:
+            if player_data["name"] == player_name:
+                result = {
+                    "name": player_name,
+                    "height": player_data["height"],
+                    "guardian": player_data["guardian"],
+                    "experience": player_data["experience"],
+                }
+                warrior_stats.append(result)
+
+    for player_name in Panthers:
+        for player_data in players:
+            if player_data["name"] == player_name:
+                result = {
+                    "name": player_name,
+                    "height": player_data["height"],
+                    "guardian": player_data["guardian"],
+                    "experience": player_data["experience"],
+                }
+                panther_stats.append(result)
+
+    panther_heights = average_height(panther_stats)
+    warrior_heights = average_height(warrior_stats)
+    bandit_heights = average_height(bandit_stats)
+    experienced_panthers, inexperienced_panthers = experience_level(panther_stats)
+    experienced_bandits, inexperienced_bandits = experience_level(bandit_stats)
+    experienced_warriors, inexperienced_warriors = experience_level(warrior_stats)
 
     print("Welcome to the Basketball Stats Tool\n")
 
@@ -130,8 +156,11 @@ def print_experience():
             print("Panthers Stats\n")
             print("-------------------------------------\n")
             print(f"There are {len(Panthers)} players on the team!\n")
-            print(f"The players are: {(', '.join(Panthers))}")
-            print_experience()
+            print(f"The players are: {(', '.join(Panthers))}\n")
+            print_parents(panther_stats)
+            experience_level(panther_stats)
+            print(f"There are {experienced_panthers} experienced players, and {inexperienced_panthers} inexperienced players.\n")
+            print(f"The average height is {panther_heights} inches!\n")
             continue
 
         elif choice_2 == ("B"):
@@ -140,6 +169,9 @@ def print_experience():
             print("-------------------------------------\n")
             print(f"There are {len(Bandits)} players on the team!\n")
             print(f"The players are: {(', '.join(Bandits))}")
+            print_parents(bandit_stats)
+            print(f"There are {experienced_bandits} experienced players, and {inexperienced_bandits} inexperienced players.\n")
+            print(f"The average height is {bandit_heights} inches!\n")
             continue
 
         elif choice_2 == ("C"):
@@ -148,6 +180,9 @@ def print_experience():
             print("-------------------------------------\n")
             print(f"There are {len(Warriors)} players on the team!\n")
             print(f"The players are: {(', '.join(Warriors))}")
+            print_parents(warrior_stats)
+            print(f"There are {experienced_warriors} experienced players, and {inexperienced_warriors} inexperienced players.\n")
+            print(f"The average height is {warrior_heights} inches!\n")
             continue
 
         else:
