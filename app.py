@@ -150,6 +150,7 @@ if __name__ == "__main__":
 
         else:
             print("\nThat is not a valid answer please try again!\n")
+            continue
 
         if choice_2 == ("A"):
             print("-------------------------------------\n")
