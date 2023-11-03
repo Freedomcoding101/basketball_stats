@@ -73,9 +73,9 @@ if __name__ == "__main__":
         experienced = 0
         inexperienced = 0
         for player in team_stats:
-            if player["experience"] == True:
+            if player["experience"]:
                 experienced += 1
-            elif player["experience"] == False:
+            elif not player["experience"]:
                 inexperienced += 1
         return experienced, inexperienced
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     bandit_stats = []
     warrior_stats = []
     panther_stats = []
-    
+
     for player_name in Bandits:
         for player_data in players:
             if player_data["name"] == player_name:
