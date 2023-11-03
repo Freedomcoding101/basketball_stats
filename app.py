@@ -58,6 +58,11 @@ if __name__ == "__main__":
         print("B) Bandits\n")
         print("C) Warriors\n")
 
+    def menu_option():
+        print("Here are your choices:\n")
+        print("A) Display Team Stats\n")
+        print("B) Quit\n")
+
     print("Welcome to the Basketball Stats Tool\n")
 
     print("----------MENU-----------\n")
@@ -65,9 +70,7 @@ if __name__ == "__main__":
     # Display Menu for user to input choices
 
     while True:
-        print("Here are your choices:\n")
-        print("A) Display Team Stats\n")
-        print("B) Quit\n")
+        menu_option()
 
     # Select a team for stats
 
@@ -96,7 +99,7 @@ if __name__ == "__main__":
         else:
             print("\nThat is not a valid answer please try again!\n")
 
-    while True:
+    
         if choice_2 == ("A"):
             print("-------------------------------------\n")
             print("Panthers Stats\n")
@@ -104,6 +107,7 @@ if __name__ == "__main__":
             print(f"There are {len(Panthers)} players on the team!\n")
             print(f"The players are: {(', '.join(Panthers))}")
             choice_2 = input("\nIf you would like to see another teams stats please enter their letter here! Otherwise type 'E' to exit: ")
+            
 
         elif choice_2 == ("B"):
             print("-------------------------------------\n")
