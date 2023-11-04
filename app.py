@@ -189,7 +189,7 @@ if __name__ == "__main__":
         else:
             print("\nThat is not a valid option please pick from A B C: ")
             print_teams()
-            continue
+            
 
     # Display thank you message once user exits
 

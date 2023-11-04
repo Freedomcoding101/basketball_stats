@@ -78,14 +78,9 @@ if __name__ == "__main__":
 
         if choice_1 == "A":
             print_teams()
+
             choice_2 = input("Enter an option from above!: ")
 
-        elif choice_1 =="B":
-            exit()
-
-        else:
-            print("\nThat is not a valid answer please try again!\n")
-            
     # Displays stats and option to continue
     # Program Loops until broken
 
