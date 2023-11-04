@@ -152,21 +152,30 @@ if __name__ == "__main__":
                 print("Panthers Stats\n")
                 print("-------------------------------------\n")
                 print(f"There are {len(Panthers)} players on the team!\n")
-                print(f"The players are: {(', '.join(Panthers))}")
+                print(f"The players are: {(', '.join(Panthers))}\n")
+                print_parents(panther_stats)
+                print(f"There are {experienced_panthers} experienced players, and {inexperienced_panthers} inexperienced players.\n")
+                print(f"The average height is {panther_heights} inches!\n")
 
             elif team_choice == "B":
                 print("-------------------------------------\n")
                 print("Bandits Stats\n")
                 print("-------------------------------------\n")
                 print(f"There are {len(Bandits)} players on the team!\n")
-                print(f"The players are: {(', '.join(Bandits))}")
+                print(f"The players are: {(', '.join(Bandits))}\n")
+                print_parents(bandit_stats)
+                print(f"There are {experienced_bandits} experienced players, and {inexperienced_bandits} inexperienced players.\n")
+                print(f"The average height is {bandit_heights} inches!\n")
 
             elif team_choice == "C":
                 print("-------------------------------------\n")
                 print("Warriors Stats\n")
                 print("-------------------------------------\n")
                 print(f"There are {len(Warriors)} players on the team!\n")
-                print(f"The players are: {(', '.join(Warriors))}")
+                print(f"The players are: {(', '.join(Warriors))}\n")
+                print_parents(warrior_stats)
+                print(f"There are {experienced_warriors} experienced players, and {inexperienced_warriors} inexperienced players.\n")
+                print(f"The average height is {warrior_heights} inches!\n")
 
             else:
                 print("\nThat is not a valid option please pick from A, B, or C.")
