@@ -54,9 +54,15 @@ if __name__ == "__main__":
     Panthers, Bandits, Warriors = balance_team()
 
     def print_teams():
-        print("\nA) Panthers\n")
-        print("B) Bandits\n")
-        print("C) Warriors\n")
+        while True:
+            print("\nA) Panthers\n")
+            print("B) Bandits\n")
+            print("C) Warriors\n")
+            choice = input("Enter the letter of the team you would like to see stats for!\n")
+            if choice in ['A', 'B', 'C']:
+                return choice
+            else:
+                print("That is not a valid answer, please try again.")
 
     def menu_option():
         print("Welcome to the Basketball Stats Tool:\n")
@@ -136,60 +142,40 @@ if __name__ == "__main__":
 
     while True:
         menu_option()
-
-    # Select a team for stats
-
         choice_1 = input("Enter an option: \n")
 
         if choice_1 == "A":
-            print_teams()
-            choice_2 = input("Enter an option from above!: ")
+            team_choice = print_teams()
+
+            if team_choice == "A":
+                print("-------------------------------------\n")
+                print("Panthers Stats\n")
+                print("-------------------------------------\n")
+                print(f"There are {len(Panthers)} players on the team!\n")
+                print(f"The players are: {(', '.join(Panthers))}")
+
+            elif team_choice == "B":
+                print("-------------------------------------\n")
+                print("Bandits Stats\n")
+                print("-------------------------------------\n")
+                print(f"There are {len(Bandits)} players on the team!\n")
+                print(f"The players are: {(', '.join(Bandits))}")
+
+            elif team_choice == "C":
+                print("-------------------------------------\n")
+                print("Warriors Stats\n")
+                print("-------------------------------------\n")
+                print(f"There are {len(Warriors)} players on the team!\n")
+                print(f"The players are: {(', '.join(Warriors))}")
+
+            else:
+                print("\nThat is not a valid option please pick from A, B, or C.")
 
         elif choice_1 == "B":
             exit()
 
         else:
-            print("\nThat is not a valid answer please try again!\n")
-            continue
-
-        if choice_2 == ("A"):
-            print("-------------------------------------\n")
-            print("Panthers Stats\n")
-            print("-------------------------------------\n")
-            print(f"There are {len(Panthers)} players on the team!\n")
-            print(f"The players are: {(', '.join(Panthers))}\n")
-            print_parents(panther_stats)
-            experience_level(panther_stats)
-            print(f"There are {experienced_panthers} experienced players, and {inexperienced_panthers} inexperienced players.\n")
-            print(f"The average height is {panther_heights} inches!\n")
-            continue
-
-        elif choice_2 == ("B"):
-            print("-------------------------------------\n")
-            print("Bandits Stats\n")
-            print("-------------------------------------\n")
-            print(f"There are {len(Bandits)} players on the team!\n")
-            print(f"The players are: {(', '.join(Bandits))}")
-            print_parents(bandit_stats)
-            print(f"There are {experienced_bandits} experienced players, and {inexperienced_bandits} inexperienced players.\n")
-            print(f"The average height is {bandit_heights} inches!\n")
-            continue
-
-        elif choice_2 == ("C"):
-            print("-------------------------------------\n")
-            print("Warriors Stats\n")
-            print("-------------------------------------\n")
-            print(f"There are {len(Warriors)} players on the team!\n")
-            print(f"The players are: {(', '.join(Warriors))}")
-            print_parents(warrior_stats)
-            print(f"There are {experienced_warriors} experienced players, and {inexperienced_warriors} inexperienced players.\n")
-            print(f"The average height is {warrior_heights} inches!\n")
-            continue
-
-        else:
-            print("\nThat is not a valid option please pick from A B C: ")
-            print_teams()
-            
+            print("\nThat is not a valid option, please pick A or B.\n")
 
     # Display thank you message once user exits
 
